@@ -41,54 +41,54 @@ export default function WebViewer() {
 
   return (
     <div className={styles.container}>
-    <div className={styles.toolbar}>
-        <button className={styles.button} onClick={toggleDarkMode}>
-            {darkMode ? <FaSun /> : <FaMoon />} {darkMode ? "Light Mode" : "Dark Mode"}
-        </button>
-        <button className={styles.button} onClick={handleFullScreen}>
-            <FaExpand /> Fullscreen
-        </button>
-        <button className={styles.button} onClick={addBookmark}>
-            <FaBookmark /> Add Bookmark
-        </button>
+        <div className={styles.toolbar}>
+            <button className={styles.button} onClick={toggleDarkMode}>
+                {darkMode ? <FaSun /> : <FaMoon />} {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+            <button className={styles.button} onClick={handleFullScreen}>
+                <FaExpand /> Fullscreen
+            </button>
+            <button className={styles.button} onClick={addBookmark}>
+                <FaBookmark /> Add Bookmark
+            </button>
+        </div>
+        <div className={styles.toolbar}>
+            <input
+                type="text"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder="Enter URL"
+                className={styles.inputField}
+            />
+            <button className={styles.button} onClick={() => setZoom(100)}>
+                <FaSearchPlus /> Reset Zoom
+            </button>
+            <button className={styles.button} onClick={() => handleZoom(10)}>
+                <FaSearchPlus /> Zoom In
+            </button>
+            <button className={styles.button} onClick={() => handleZoom(-10)}>
+                <FaSearchMinus /> Zoom Out
+            </button>
+        </div>
+        <iframe
+            src={url}
+            style={{ width: `${zoom}%` }}
+            className={styles.iframeContainer}
+            title="Web Viewer">
+        </iframe>
+        <ul className={styles.bookmarkList}>
+            {bookmarks.map((bookmark, index) => (
+                <li key={index} className={styles.bookmarkItem}>
+                    <span>{bookmark.url}</span>
+                    <button
+                        className={styles.bookmarkButton}
+                        onClick={() => setUrl(bookmark.url)}
+                    >
+                        Go
+                    </button>
+                </li>
+            ))}
+        </ul>
     </div>
-    <div className={styles.toolbar}>
-        <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Enter URL"
-            className={styles.inputField}
-        />
-        <button className={styles.button} onClick={() => setZoom(100)}>
-            <FaSearchPlus /> Reset Zoom
-        </button>
-        <button className={styles.button} onClick={() => handleZoom(10)}>
-            <FaSearchPlus /> Zoom In
-        </button>
-        <button className={styles.button} onClick={() => handleZoom(-10)}>
-            <FaSearchMinus /> Zoom Out
-        </button>
-    </div>
-    <iframe
-        src={url}
-        style={{ width: `${zoom}%` }}
-        className={styles.iframeContainer}
-        title="Web Viewer"
-    ></iframe>
-    <ul className={styles.bookmarkList}>
-        {bookmarks.map((bookmark, index) => (
-            <li key={index} className={styles.bookmarkItem}>
-                <span>{bookmark.url}</span>
-                <button
-                    className={styles.bookmarkButton}
-                    onClick={() => setUrl(bookmark.url)}
-                >
-                    Go
-                </button>
-            </li>
-        ))}
-    </ul>
-</div>
   )
 }
