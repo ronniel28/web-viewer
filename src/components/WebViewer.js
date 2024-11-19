@@ -5,7 +5,7 @@ import { FaMoon, FaSun, FaExpand, FaBookmark, FaSearchPlus, FaSearchMinus } from
 
 export default function WebViewer() {
 
-    const [url, setUrl] = useState("https://google.com");
+    const [url, setUrl] = useState("https://mywebsite.com");
     const [zoom, setZoom] = useState(100);
     const [darkMode, setDarkMode] = useState(false);
     const [bookmarks, setBookmarks] = useState([]);
