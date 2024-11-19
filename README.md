@@ -44,3 +44,36 @@ Navigate to your project directory where the Capacitor app is located and build 
   ```
 
   This will generate the www folder with the web assets.
+
+  ### 3. Add the Platform
+For Android, run:
+
+  ```bash
+    npx cap add android
+  ```
+
+For iOS, run:
+
+  ```bash
+    npx cap add ios
+  ```
+
+   ### 4. Sync with Capacitor
+    After adding the platform, sync your project to ensure the native code is up to date:
+ ```bash
+   npx cap sync
+```
+
+   ### 5. Open in the IDE
+To test on a physical device, open the platform-specific project in Android Studio or Xcode:
+For Android:
+
+  ```bash
+    npx cap open android
+  ```
+
+For iOS:
+
+  ```bash
+    npx cap open ios
+  ```
